@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +22,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css"
 rel="stylesheet"
 />
 
-<link rel="stylesheet" href="/style.css">
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">  
+{% endblock  %}
     <title>Document Translator</title>
 </head>
 <body>
