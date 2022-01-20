@@ -50,7 +50,7 @@
                     </form>
                 </div>
                 <div id="details">
-                    <h5 class="card-title">Document Details</h5>
+                    
 
                     <?php
 
@@ -64,7 +64,7 @@
                         $metadata = $pdf->getDetails();
 
                         // loop each property
-
+                         echo '<h5 class="card-title">Document Details</h5>';
                         foreach ($metadata as $meta => $value) {
                             if (is_array($value)) {
                                 $value . implode(", ", $value);
@@ -84,7 +84,8 @@
         <div class="card">
             <p class="p-4">
          <?php 
-         echo $text;
+         if(!empty($text))
+          echo $text;
            
          clearstatcache();
             ?>
