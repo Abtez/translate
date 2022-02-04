@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Authot" content="Peter Munene">
+    <meta name="description" content="A Simple Website for Parsing pdf files so as to identify certain keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
@@ -13,13 +15,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="src/style.css">
-    <title>Document Translator</title>
+    <title>P-translate</title>
 </head>
 
 <body>
     <?php
+    
     // include composer autoloader
     include 'vendor/autoload.php';
+    include 'src/functions.php';
+
+   // $logger->log('Successfully included'. json_encode(get_included_files()));
     ?>
     <div class="container">
 
@@ -43,86 +49,116 @@
                     <p class="card-text">Select document to translate</p>
                     <br>
                     <form action="" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file" id="file" class="inputfile" accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf" />
-                        <label class="p-2" for="file">Choose a file <i class="fas fa-download"></i></label>
+                        <div class='file-input'>
+                            <input type='file' name="file"  accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf">
+                            <span class='button'>Choose</span>
+                            <span class='label' data-js-label>No file selected</label>
+                        </div>
                         <br>
-                        <button name="submitpdf" type="submit" id="submitpdf" class="btn btn-outline-dark btn-sm mt-3">Submit</button>
+                        <button name="submitpdf" type="submit" id="submitpdf" class="btn btn-primary">Upload</button>
                     </form>
                 </div>
                 <div id="details">
-                    
 
                     <?php
 
                     if (isset($_POST['submitpdf'])) {
+                        $start_time = microtime(true);
+                       // $logger->log('Submit was pressed and posted'. json_encode($_POST));
+                        $logger->log('Succesfully uploaded '. json_encode($_FILES));
+
                         // parse pdf
                         $parser = new \Smalot\PdfParser\Parser();
 
-                        $pdf = $parser->parseFile($_FILES['file']['tmp_name']);
+                        try {
+                                $logger->log('Succesfully instantiated the Parser'. get_class($parser));
 
-                        // get metadata
-                        $metadata = $pdf->getDetails();
+                                $pdf = $parser->parseFile($_FILES['file']['tmp_name']);
+                                $text = $pdf->getText();
 
-                        // loop each property
-                         echo '<h5 class="card-title">Document Details</h5>';
-                        foreach ($metadata as $meta => $value) {
-                            if (is_array($value)) {
-                                $value . implode(", ", $value);
-                            }
-                            echo '               
-                                  <p class="card-text">' . '<b>' . $meta . '</b>' . "<br> " . $value . "<br>" . '</p>
-                                  ';
-                        }
+                                $logger->log('Trying to parse '. implode(', ', $pdf->getDetails()));
 
-                        $text = $pdf->getText();
-                       
+                                $end_time = microtime(true);
+                                $execution_time = ($end_time - $start_time);
+
+                            } catch (\Exception $e) {
+
+                                   echo '<div class="card" style="color:red;bg-color:red;"> <p class="p-4">' . $e->getMessage() .  '</p> </div> </div>';
+                                   $logger->log('Error: An exception was called '. $e->getMessage());
+                            return;
+                         }
                     }
+                    // }else{
+                    //    echo '<div class="card" style="color:red;bg-color:red;"> <p class="p-4"> No File was Uploaded! <br> Try Again </p> </div> </div>';
+                    //    $logger->log('No file was uploaded though upload was pressed');
+                    //    return;  
+                    // }
                     ?>
                 </div>
             </div>
         </div>
         <div class="card">
             <p class="p-4">
-         <?php 
-         if(!empty($text))
-          echo $text;
-           
-         clearstatcache();
-            ?>
+                <?php
+
+                if (!empty($text)){
+                  $logger->log('Successfully parsed  '. reset($pdf->getDetails()) .' with  '. end($pdf->getDetails()).' pages in '. round($execution_time, 2). 'secs');
+
+                    echo $text;
+                }else{
+                   $logger->log('Something has happened cause the file has not been parsed in '. round($execution_time, 2). 'secs');
+                }
+                   
+
+                clearstatcache();
+                ?>
             </p>
         </div>
-
     </div>
 
-
-
-
-
-
-    <footer class="bg-dark text-center text-light text-lg-start">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2022 Copyright:
-            <a style="color: #1C7BB8 !important;" class="text-dark" href="https://github.com/Abzed"> <b><u>CODERS HUB
-                        KE</u></b> </a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-
-
-
-    <!-- MDB -->
+<footer style="margin-top: 240px;">
+  <div class="container">
+    <div class="row"> 
+    
+    <div class="row text-center">
+      <div class="col-md-4 box">
+        <span class="copyright quick-links">Copyright &copy; P-translate <script>document.write(new Date().getFullYear())</script>
+        </span>
+      </div>
+      <div class="col-md-4 box">
+        <ul class="list-inline social-buttons">
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 box">
+        <ul class="list-inline quick-links">
+          <li class="list-inline-item">
+            <a href="#">Abzed</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Peter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
-    <script>
-        const submitpdf = document.querySelector('#submitpdf');
-        submitpdf.addEventListener('click', function() {
-            const translatediv = document.querySelector('#translate');
-            translatediv.style.cssText = 'display:none';
-
-            const detailsdiv = document.querySelector('#details');
-            detailsdiv.style.cssText = 'display:block;';
-        });
-    </script>
+    <script src="src/index.js"></script>
 </body>
 
 </html>
