@@ -2,163 +2,175 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="Authot" content="Peter Munene">
-    <meta name="description" content="A Simple Website for Parsing pdf files so as to identify certain keywords">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="Authot" content="Peter Munene">
+  <meta name="description" content="A Simple Website for Parsing pdf files so as to identify certain keywords">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="src/style.css">
-    <title>P-translate</title>
+  <link rel="stylesheet" href="src/style.css">
+  <title>P-translate</title>
 </head>
 
 <body>
-    <?php
-    
-    // include composer autoloader
-    include 'vendor/autoload.php';
-    include 'src/functions.php';
+  <?php
 
-   // $logger->log('Successfully included'. json_encode(get_included_files()));
-    ?>
-    <div class="container">
+  // include composer autoloader
+  include 'vendor/autoload.php';
+  include 'src/DocumentParser.php';
+  include 'src/functions.php';
 
-        <div class="card text-center">
-            <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="true" href="#!">Convert PDF</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#!">Text Translate</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="card-body">
-                <div id="translate">
-                    <h5 class="card-title">Welcome To Document Translator</h5>
-                    <p class="card-text">Select document to translate</p>
-                    <br>
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <div class='file-input'>
-                            <input type='file' name="file"  accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf">
-                            <span class='button'>Choose</span>
-                            <span class='label' data-js-label>No file selected</label>
-                        </div>
-                        <br>
-                        <button name="submitpdf" type="submit" id="submitpdf" class="btn btn-primary">Upload</button>
-                    </form>
-                </div>
-                <div id="details">
-
-                    <?php
-
-                    if (isset($_POST['submitpdf'])) {
-                        $start_time = microtime(true);
-                       // $logger->log('Submit was pressed and posted'. json_encode($_POST));
-                        $logger->log('Succesfully uploaded '. json_encode($_FILES));
-
-                        // parse pdf
-                        $parser = new \Smalot\PdfParser\Parser();
-
-                        try {
-                                $logger->log('Succesfully instantiated the Parser'. get_class($parser));
-
-                                $pdf = $parser->parseFile($_FILES['file']['tmp_name']);
-                                $text = $pdf->getText();
-
-                                $logger->log('Trying to parse '. implode(', ', $pdf->getDetails()));
-
-                                $end_time = microtime(true);
-                                $execution_time = ($end_time - $start_time);
-
-                            } catch (\Exception $e) {
-
-                                   echo '<div class="card" style="color:red;bg-color:red;"> <p class="p-4">' . $e->getMessage() .  '</p> </div> </div>';
-                                   $logger->log('Error: An exception was called '. $e->getMessage());
-                            return;
-                         }
-                    }
-                    // }else{
-                    //    echo '<div class="card" style="color:red;bg-color:red;"> <p class="p-4"> No File was Uploaded! <br> Try Again </p> </div> </div>';
-                    //    $logger->log('No file was uploaded though upload was pressed');
-                    //    return;  
-                    // }
-                    ?>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <p class="p-4">
-                <?php
-
-                if (!empty($text)){
-                  $logger->log('Successfully parsed  '. reset($pdf->getDetails()) .' with  '. end($pdf->getDetails()).' pages in '. round($execution_time, 2). 'secs');
-
-                    echo $text;
-                }else{
-                   $logger->log('Something has happened cause the file has not been parsed in '. round($execution_time, 2). 'secs');
-                }
-                   
-
-                clearstatcache();
-                ?>
-            </p>
-        </div>
-    </div>
-
-<footer style="margin-top: 240px;">
+  // $logger->log('Successfully included'. json_encode(get_included_files()));
+  ?>
   <div class="container">
-    <div class="row"> 
-    
-    <div class="row text-center">
-      <div class="col-md-4 box">
-        <span class="copyright quick-links">Copyright &copy; P-translate <script>document.write(new Date().getFullYear())</script>
-        </span>
-      </div>
-      <div class="col-md-4 box">
-        <ul class="list-inline social-buttons">
-          <li class="list-inline-item">
-            <a href="#">
-            <i class="fab fa-twitter"></i>
-          </a>
+
+    <div class="card text-center">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="true" href="#!">Convert PDF</a>
           </li>
-          <li class="list-inline-item">
-            <a href="#">
-            <i class="fab fa-facebook-f"></i>
-          </a>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#!">Text Translate</a>
           </li>
-          <li class="list-inline-item">
-            <a href="#">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>
       </div>
-      <div class="col-md-4 box">
-        <ul class="list-inline quick-links">
-          <li class="list-inline-item">
-            <a href="#">Abzed</a>
-          </li>
-          <li class="list-inline-item">
-            <a href="#">Peter</a>
-          </li>
-        </ul>
+      <div class="card-body">
+        <div id="translate">
+          <h5 class="card-title">Welcome To Document Translator</h5>
+          <p class="card-text">Select document to translate</p>
+          <br>
+          <form action="" method="post" enctype="multipart/form-data">
+            <div class='file-input'>
+              <input type='file' name="file" accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf">
+              <span class='button'>Choose</span>
+              <span class='label' data-js-label>No file selected</label>
+            </div>
+            <br>
+            <button name="submitpdf" type="submit" id="submitpdf" class="btn btn-primary">Upload</button>
+          </form>
+        </div>
+        <div id="details">
+
+          <?php
+
+          if (isset($_POST['submitpdf'])) {
+            $start_time = microtime(true);
+            // $logger->log('Submit was pressed and posted'. json_encode($_POST));
+            $logger->log('Succesfully uploaded ' . json_encode($_FILES));
+
+            // parse pdf
+
+            if ($_FILES['file']['type'] === "application/pdf") {
+              $parser = new \Smalot\PdfParser\Parser();
+              try {
+                $logger->log('Succesfully instantiated the Parser' . get_class($parser));
+
+                $pdf = $parser->parseFile($_FILES['file']['tmp_name']);
+                $text = $pdf->getText();
+
+                $logger->log('Trying to parse ' . implode(', ', $pdf->getDetails()));
+
+                $end_time = microtime(true);
+                $execution_time = ($end_time - $start_time);
+
+              } catch (\Exception $e) {
+
+                echo '<div class="card" style="color:red;bg-color:red;"> <p class="p-4">' . $e->getMessage() .  '</p> </div> </div>';
+                $logger->log('Error: An exception was called ' . $e->getMessage());
+
+                return;
+              }
+
+            } else {
+              try {
+                $text = LukeMadhanga\DocumentParser::parseFromFile($_FILES['file']['tmp_name']);
+
+              } catch (\Exception $e) {
+                
+                echo '<div class="card" style="color:red;bg-color:red;"> <p class="p-4">' . $e->getMessage() .  '</p> </div> </div>';
+                $logger->log('Error: An exception was called ' . $e->getMessage());
+
+                return;
+              }
+            }
+          }
+          ?>
+        </div>
       </div>
+    </div>
+    <div class="card">
+      <p class="p-4">
+        <?php
+
+        if (!empty($text)) {
+          //$logger->log('Successfully parsed  '. reset($pdf->getDetails()) .' with  '. end($pdf->getDetails()).' pages in '. round($execution_time, 2). 'secs');
+          echo $text;
+        } else {
+          // $logger->log('Error: Something has happened cause the file with  '. end($pdf->getDetails()).' pages has not been parsed ');
+        }
+
+
+        clearstatcache();
+        ?>
+      </p>
     </div>
   </div>
-</footer>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
-    <script src="src/index.js"></script>
+
+  <footer style="margin-top: 240px;">
+    <div class="container">
+      <div class="row">
+
+        <div class="row text-center">
+          <div class="col-md-4 box">
+            <span class="copyright quick-links">Copyright &copy; P-translate | Chungu <script>
+                document.write(new Date().getFullYear())
+              </script>
+            </span>
+          </div>
+          <div class="col-md-4 box">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 box">
+            <ul class="list-inline quick-links">
+              <li class="list-inline-item">
+                <a href="https://github.com/Abzed/translate/tree/python">Abzed</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/Abzed/translate/tree/php">Peter</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </footer>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+  <script src="src/index.js"></script>
 </body>
 
 </html>
