@@ -1,2 +1,69 @@
 ------------------------------------------------------
 Logs will be stored here
+Sat, 19 Feb 2022 19:49:18 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56--2 (1).pdf","full_path":"6066_U_14022022-56--2 (1).pdf","type":"application\/pdf","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\php8632.tmp","error":0,"size":97768}}
+Sat, 19 Feb 2022 19:49:19 - localhost - ::1 - Succesfully instantiated the ParserSmalot\PdfParser\Parser
+Sat, 19 Feb 2022 19:49:19 - localhost - ::1 - Trying to parse 2022-02-18T14:05:08+00:00, PDFium, 1
+Sat, 19 Feb 2022 19:59:16 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56--2 (1).pdf","full_path":"6066_U_14022022-56--2 (1).pdf","type":"application\/pdf","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\phpA45E.tmp","error":0,"size":97768}}
+Sat, 19 Feb 2022 19:59:16 - localhost - ::1 - Succesfully instantiated the ParserSmalot\PdfParser\Parser
+Sat, 19 Feb 2022 19:59:16 - localhost - ::1 - Trying to parse 2022-02-18T14:05:08+00:00, PDFium, 1
+Sat, 19 Feb 2022 21:27:24 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56-2.ocr.docx","full_path":"6066_U_14022022-56-2.ocr.docx","type":"application\/vnd.openxmlformats-officedocument.wordprocessingml.document","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\php54CE.tmp","error":0,"size":8735}}
+Sat, 19 Feb 2022 21:27:29 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56--2 (1).pdf","full_path":"6066_U_14022022-56--2 (1).pdf","type":"application\/pdf","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\php6903.tmp","error":0,"size":97768}}
+Sat, 19 Feb 2022 21:27:29 - localhost - ::1 - Succesfully instantiated the ParserSmalot\PdfParser\Parser
+Sat, 19 Feb 2022 21:27:29 - localhost - ::1 - Trying to parse 2022-02-18T14:05:08+00:00, PDFium, 1
+Sat, 19 Feb 2022 21:27:53 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56--2 (1).pdf","full_path":"6066_U_14022022-56--2 (1).pdf","type":"application\/pdf","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\phpC712.tmp","error":0,"size":97768}}
+Sat, 19 Feb 2022 21:27:53 - localhost - ::1 - Succesfully instantiated the ParserSmalot\PdfParser\Parser
+Sat, 19 Feb 2022 21:27:53 - localhost - ::1 - Trying to parse 2022-02-18T14:05:08+00:00, PDFium, 1
+Sun, 20 Feb 2022 11:48:59 - localhost - ::1 - Succesfully uploaded {"file":{"name":"","full_path":"","type":"","tmp_name":"","error":4,"size":0}}
+Sun, 20 Feb 2022 11:49:00 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 11:50:54 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56--2 (1).pdf","full_path":"6066_U_14022022-56--2 (1).pdf","type":"application\/pdf","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\phpCB79.tmp","error":0,"size":97768}}
+Sun, 20 Feb 2022 11:50:55 - localhost - ::1 - Succesfully instantiated the ParserSmalot\PdfParser\Parser
+Sun, 20 Feb 2022 11:50:56 - localhost - ::1 - Trying to parse 2022-02-18T14:05:08+00:00, PDFium, 1
+Sun, 20 Feb 2022 12:17:30 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56--2 (1).pdf","full_path":"6066_U_14022022-56--2 (1).pdf","type":"application\/pdf","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\php257C.tmp","error":0,"size":97768}}
+Sun, 20 Feb 2022 12:17:30 - localhost - ::1 - Succesfully instantiated the ParserSmalot\PdfParser\Parser
+Sun, 20 Feb 2022 12:17:30 - localhost - ::1 - Trying to parse 2022-02-18T14:05:08+00:00, PDFium, 1
+Sun, 20 Feb 2022 12:21:05 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56--2 (1).pdf","full_path":"6066_U_14022022-56--2 (1).pdf","type":"application\/pdf","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\php6DA2.tmp","error":0,"size":97768}}
+Sun, 20 Feb 2022 12:21:05 - localhost - ::1 - Succesfully instantiated the ParserSmalot\PdfParser\Parser
+Sun, 20 Feb 2022 12:21:05 - localhost - ::1 - Trying to parse 2022-02-18T14:05:08+00:00, PDFium, 1
+Sun, 20 Feb 2022 12:58:34 - localhost - ::1 - Succesfully uploaded []
+Sun, 20 Feb 2022 12:58:34 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 12:58:41 - localhost - ::1 - Succesfully uploaded []
+Sun, 20 Feb 2022 12:58:41 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 12:58:48 - localhost - ::1 - Succesfully uploaded []
+Sun, 20 Feb 2022 12:58:48 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 12:58:55 - localhost - ::1 - Succesfully uploaded []
+Sun, 20 Feb 2022 12:58:55 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 12:59:06 - localhost - ::1 - Succesfully uploaded []
+Sun, 20 Feb 2022 12:59:06 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 13:00:00 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56--2 (1).pdf","full_path":"6066_U_14022022-56--2 (1).pdf","type":"application\/pdf","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\phpD53.tmp","error":0,"size":97768}}
+Sun, 20 Feb 2022 13:00:00 - localhost - ::1 - Succesfully instantiated the ParserSmalot\PdfParser\Parser
+Sun, 20 Feb 2022 13:00:00 - localhost - ::1 - Trying to parse 2022-02-18T14:05:08+00:00, PDFium, 1
+Sun, 20 Feb 2022 13:38:03 - localhost - ::1 - Succesfully uploaded {"file":{"name":"","full_path":"","type":"","tmp_name":"","error":4,"size":0}}
+Sun, 20 Feb 2022 13:38:03 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 13:38:04 - localhost - ::1 - Succesfully uploaded {"file":{"name":"","full_path":"","type":"","tmp_name":"","error":4,"size":0}}
+Sun, 20 Feb 2022 13:38:04 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 13:38:13 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56--2.pdf","full_path":"6066_U_14022022-56--2.pdf","type":"application\/pdf","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\phpA6C.tmp","error":0,"size":199521}}
+Sun, 20 Feb 2022 13:38:13 - localhost - ::1 - Succesfully instantiated the ParserSmalot\PdfParser\Parser
+Sun, 20 Feb 2022 13:38:13 - localhost - ::1 - Trying to parse 2022-02-18T17:04:54+03:00, 2022-02-18T17:04:54+03:00, Adobe Acrobat Pro DC (32-bit) 21 Paper Capture Plug-in with ClearScan, 1
+Sun, 20 Feb 2022 13:38:20 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022.pdf","full_path":"6066_U_14022022.pdf","type":"","tmp_name":"","error":1,"size":0}}
+Sun, 20 Feb 2022 13:38:20 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 14:24:51 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022.pdf","full_path":"6066_U_14022022.pdf","type":"","tmp_name":"","error":1,"size":0}}
+Sun, 20 Feb 2022 14:24:51 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 14:24:58 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022.pdf","full_path":"6066_U_14022022.pdf","type":"","tmp_name":"","error":1,"size":0}}
+Sun, 20 Feb 2022 14:24:58 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 14:38:03 - localhost - ::1 - Succesfully uploaded {"file":{"name":"","full_path":"","type":"","tmp_name":"","error":4,"size":0}}
+Sun, 20 Feb 2022 14:38:03 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 14:44:09 - localhost - ::1 - Succesfully uploaded {"file":{"name":"","full_path":"","type":"","tmp_name":"","error":4,"size":0}}
+Sun, 20 Feb 2022 14:44:09 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 14:44:22 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56--2.pdf","full_path":"6066_U_14022022-56--2.pdf","type":"application\/pdf","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\php98B2.tmp","error":0,"size":199521}}
+Sun, 20 Feb 2022 14:44:22 - localhost - ::1 - Succesfully instantiated the ParserSmalot\PdfParser\Parser
+Sun, 20 Feb 2022 14:44:22 - localhost - ::1 - Trying to parse 2022-02-18T17:04:54+03:00, 2022-02-18T17:04:54+03:00, Adobe Acrobat Pro DC (32-bit) 21 Paper Capture Plug-in with ClearScan, 1
+Sun, 20 Feb 2022 14:44:27 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022.pdf","full_path":"6066_U_14022022.pdf","type":"","tmp_name":"","error":1,"size":0}}
+Sun, 20 Feb 2022 14:44:27 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Sun, 20 Feb 2022 14:45:31 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022.pdf","full_path":"6066_U_14022022.pdf","type":"","tmp_name":"","error":1,"size":0}}
+Sun, 20 Feb 2022 14:45:31 - localhost - ::1 - Error: An exception was called Failed to read file: cannot read file: 
+Mon, 21 Feb 2022 09:24:25 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56--2 (1).pdf","full_path":"6066_U_14022022-56--2 (1).pdf","type":"application\/pdf","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\php9FA.tmp","error":0,"size":97768}}
+Mon, 21 Feb 2022 09:24:27 - localhost - ::1 - Succesfully instantiated the ParserSmalot\PdfParser\Parser
+Mon, 21 Feb 2022 09:24:29 - localhost - ::1 - Trying to parse 2022-02-18T14:05:08+00:00, PDFium, 1
+Mon, 21 Feb 2022 09:33:25 - localhost - ::1 - Succesfully uploaded {"file":{"name":"6066_U_14022022-56--2 (1).pdf","full_path":"6066_U_14022022-56--2 (1).pdf","type":"application\/pdf","tmp_name":"C:\\Users\\kanor\\AppData\\Local\\Temp\\php4632.tmp","error":0,"size":97768}}
+Mon, 21 Feb 2022 09:33:25 - localhost - ::1 - Succesfully instantiated the ParserSmalot\PdfParser\Parser
+Mon, 21 Feb 2022 09:33:25 - localhost - ::1 - Trying to parse 2022-02-18T14:05:08+00:00, PDFium, 1

@@ -10,15 +10,16 @@
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="Peter Munene, Abzed Mohamed">
-    <!-- Font Awesmmmmmjdfjdfjfjdfjdje -->
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet" />
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js" rel="stylesheet"/>
 
-    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="src/style.css" media="(prefers-color-scheme: dark)">
     <title>P-translate</title>
 </head>
 
@@ -45,19 +46,33 @@
                         <a class="nav-link disabled" href="#!">Text Translate</a>
                     </li>
                 </ul>
+                <div class="mode">
+                    <input type="checkbox" class="checkbox" id="checkbox">
+                    <label for="checkbox" class="label">
+                        <i class="fas fa-moon"></i>
+                        <i class='fas fa-sun'></i>
+                        <div class='ball'>
+                    </label>
+                </div>
             </div>
 
             <div class="card-body">
                 <div id="translate">
                     <h5 class="card-title">Welcome to Document Translator</h5>
-                    <p class="card-text">Select document to translate</p>
+                    <i class="fab fa-cloud-upload"></i>
                     <br>
                     <form action="" method="post" enctype="multipart/form-data">
-                        <div class='file-input'>
+
+                        <p style="text-align: center;">Select document to translate <br />
                             <input type='file' name="file" accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf">
-                            <span class='button'>Choose</span>
-                            <span class='label' data-js-label>No file selected</label>
-                        </div>
+                            <!-- <span class='button'>Choose</span> File </p> -->
+                        </p>
+
+
+                        <!-- <div class='file-input'>
+                            
+                             <span class='label' data-js-label>No file selected</label>
+                        </div> -->
                         <br>
                         <button name="submitpdf" type="submit" id="submitpdf" class="btn btn-primary">Upload</button>
                     </form>
@@ -113,21 +128,21 @@
         <div class="p-4 card">
             <p class="
                 <?php
-                    if ($_FILES['file']['type'] === 'application/pdf') {
-                        echo 'p-4';
-                    } else {
-                        echo '';
-                    }
-                    ?>
+                if ($_FILES['file']['type'] === 'application/pdf') {
+                    echo 'p-4';
+                } else {
+                    echo '';
+                }
+                ?>
                 ">
                 <?php
 
                 if (!empty($text)) {
                     //$logger->log('Successfully parsed  '. reset($pdf->getDetails()) .' with  '. end($pdf->getDetails()).' pages in '. round($execution_time, 2). 'secs');
-                        echo $text;
-                    } else {
-                        // $logger->log('Error: Something has happened cause the file with  '. end($pdf->getDetails()).' pages has not been parsed ');
-                    }
+                    echo $text;
+                } else {
+                    // $logger->log('Error: Something has happened cause the file with  '. end($pdf->getDetails()).' pages has not been parsed ');
+                }
 
 
                 clearstatcache();
@@ -190,6 +205,18 @@
     </footer>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
     <script src="src/index.js"></script>
+    <script>
+        var myVar;
+
+        function myFunction() {
+            myVar = setTimeout(showPage, 3000);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        }
+    </script>
 </body>
 
 </html>

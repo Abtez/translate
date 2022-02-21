@@ -1,5 +1,14 @@
 // Also see: https://www.quirksmode.org/dom/inputfile.html
 
+const checkbox = document.getElementById('checkbox');
+
+checkbox.addEventListener('change', ()=>{
+  document.body.classList.toggle('dark');
+  localStorage.setItem("KEY", "value");
+  // localStorage.getItem("KEY");
+})
+
+// localStorage.setItem("Max", "Keme");
 var inputs = document.querySelectorAll('.file-input')
 
 for (var i = 0, len = inputs.length; i < len; i++) {
@@ -51,3 +60,4 @@ function getQoute() {
 
 
         setInterval(getQoute, 7200);
+        
