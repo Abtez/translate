@@ -17,7 +17,7 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet" />
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js" rel="stylesheet" />
 
     <link rel="stylesheet" href="src/style.css" media="(prefers-color-scheme: dark)">
     <title>P-translate</title>
@@ -73,6 +73,7 @@
                             
                              <span class='label' data-js-label>No file selected</label>
                         </div> -->
+
                         <br>
                         <button name="submitpdf" type="submit" id="submitpdf" class="btn btn-primary">Upload</button>
                     </form>
@@ -150,6 +151,33 @@
             </p>
         </div>
     </div>
+    <br>
+    <!-- <div class="container">
+        <div class="card">
+            <h5 class="card-header">Possible LI's</h5>
+            <div class="card-body">
+                <h5 class="card-title">The following have been found to be possible LI's within the file</h5>
+                <p class="card-text">Confirm and copy them</p>
+
+                 <script>
+                    var Lis = document.getElementsByClassName("pearl-hilighted-word");
+                    Lis = document.querySelectorAll('#p-4 card .pearl-highlighted-word');
+                </script>
+                <script>
+                    var closebtns = document.getElementsByClassName("close");
+                    var i;
+
+                    /* Loop through the elements, and hide the parent, when clicked on */
+                    for (i = 0; i < closebtns.length; i++) {
+                        closebtns[i].addEventListener("click", function() {
+                            this.parentElement.style.display = 'none';
+                        });
+                    }
+                </script>
+                <a href="#" onclick="copyText()" class="btn btn-primary">Copy LI's</a>
+            </div>
+        </div>
+    </div> -->
 
     <footer style="margin-top: 220px;">
         <div class="container">
@@ -217,6 +245,7 @@
             document.getElementById("myDiv").style.display = "block";
         }
     </script>
+
 </body>
 
 </html>
