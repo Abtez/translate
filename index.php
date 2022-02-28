@@ -152,12 +152,12 @@
         </div>
     </div>
     <br>
-    <!-- <div class="container">
+    <div class="container">
         <div class="card">
             <h5 class="card-header">Possible LI's</h5>
             <div class="card-body">
                 <h5 class="card-title">The following have been found to be possible LI's within the file</h5>
-                <p class="card-text">Confirm and copy them</p>
+                <p class="card-text">Confirm and copy them to your clipboard</p>
 
                  <script>
                     var Lis = document.getElementsByClassName("pearl-hilighted-word");
@@ -177,7 +177,7 @@
                 <a href="#" onclick="copyText()" class="btn btn-primary">Copy LI's</a>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <footer style="margin-top: 220px;">
         <div class="container">
