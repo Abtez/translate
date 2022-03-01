@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="author" content="Peter Munene, Abzed Mohamed">
+    <meta name="author" content="Peter Munene, Abzed Mohamed Maxwell Kanuro">
+    <link rel="shortcut icon" href="static/translate.svg" type="image/svg">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
