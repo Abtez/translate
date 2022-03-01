@@ -28,8 +28,7 @@
     <?php
 
     // include composer autoloader
-    include 'vendor/autoload.php';
-    include 'src/DocumentParser.php';
+    include 'vendor/autoload.php'; 
     include 'src/functions.php';
 
     // $logger->log('Successfully included'. json_encode(get_included_files()));
@@ -112,7 +111,7 @@
                             }
                         } else {
                             try {
-                                $text = LukeMadhanga\DocumentParser::parseFromFile($_FILES['file']['tmp_name']);
+                                $text = \LukeMadhanga\DocumentParser::parseFromFile($_FILES['file']['tmp_name']);
                             } catch (\Exception $e) {
 
                                 echo '<div class="card" style="color:red;bg-color:red;"> <p class="p-4">' . $e->getMessage() .  '</p> </div> </div>';
