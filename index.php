@@ -10,7 +10,7 @@
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="Peter Munene, Abzed Mohamed Maxwell Kanuro">
-    <link rel="shortcut icon" href="static/translate.svg" type="image/svg">
+    <link rel="shortcut icon" href="static/imgs/translate.svg" type="image/svg">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -182,15 +182,7 @@
     <footer style="margin-top: 220px;">
         <div class="container">
             <div class="row">
-                <script>
-                    fetch("https://type.fit/api/quotes")
-                        .then(function(response) {
-                            return response.json();
-                        })
-                        .then(function(data) {
-                            console.log(data);
-                        });
-                </script>
+               
                 <div class="row text-center">
                     <div class="col-md-4 box">
                         <span class="copyright quick-links">Copyright &copy; P-translate
@@ -232,7 +224,7 @@
             </div>
     </footer>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
-    <script src="src/index.js"></script>
+    <script src="static/js/index.js"></script>
     <script>
         var myVar;
 
