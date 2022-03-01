@@ -1,0 +1,91 @@
+.mode {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: #1c7bb8;
+}
+
+/*pearl highlighting*/
+.pearl-hilighted-word {
+  font-size: medium;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  padding: 3px;
+  font-style: normal;
+  color: white;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+/*Mode*/
+
+body.dark {
+  background-color: #292c35;
+  color: whitesmoke;
+}
+
+body.dark .card {
+  background-color: #292c35;
+  color: whitesmoke;
+}
+
+.checkbox {
+  opacity: 0;
+  position: relative;
+}
+
+.label {
+  width: 50px;
+  height: 26px;
+  background-color: #111;
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: pink;
+}
+
+.fa-sun {
+  color: yellow;
+}
