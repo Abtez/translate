@@ -1,8 +1,0 @@
-/nbproject/
-
-# Composer #
-/vendor/
-
-# Tests cache #
-/.phpunit.*
-/tests/.*
