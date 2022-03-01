@@ -15,12 +15,20 @@ class ComposerStaticInite5e4b0ed0752fa697b8f8a65b3b3a1d2
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
         ),
+        'L' => 
+        array (
+            'LukeMadhanga\\' => 13,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'LukeMadhanga\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lukemadhanga/php-document-parser/src',
         ),
     );
 
@@ -34,12 +42,17 @@ class ComposerStaticInite5e4b0ed0752fa697b8f8a65b3b3a1d2
         ),
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInite5e4b0ed0752fa697b8f8a65b3b3a1d2::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInite5e4b0ed0752fa697b8f8a65b3b3a1d2::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInite5e4b0ed0752fa697b8f8a65b3b3a1d2::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInite5e4b0ed0752fa697b8f8a65b3b3a1d2::$classMap;
 
         }, null, ClassLoader::class);
     }
