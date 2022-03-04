@@ -2,6 +2,59 @@
   display: flex;
   flex-direction: row-reverse;
 }
+
+.file-input {
+  display: inline-block;
+  text-align: left;
+  background: #fff;
+  padding: 16px;
+  width: 450px;
+  position: relative;
+  border-radius: 3px;
+}
+
+.file-input > [type='file'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+  cursor: pointer;
+  border: 1px solid rgb(112, 62, 62);
+}
+
+.file-input > .button {
+  display: inline-block;
+  cursor: pointer;
+  background: rgb(238, 171, 171);
+  padding: 8px 16px;
+  border-radius: 2px;
+  margin-right: 8px;
+}
+
+.file-input:hover > .button {
+  background: rgb(235, 39, 98);
+  color: rgb(146, 96, 96);
+}
+
+.file-input > .label {
+  color: rgb(70, 31, 31);
+  white-space: nowrap;
+  opacity: .3;
+}
+
+.file-input.-chosen > .label {
+  opacity: 1;
+}
+
+
+
+
+
+
+
 .inputfile {
   width: 0.1px;
   height: 0.1px;

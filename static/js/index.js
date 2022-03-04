@@ -1,8 +1,12 @@
 // Also see: https://www.quirksmode.org/dom/inputfile.html
+// document.addEventListener('load', ()=>{
+//   document.getElementById("translate").style.display = "none";
+// });
+
 
 const checkbox = document.getElementById('checkbox');
 
-checkbox.addEventListener('change', ()=>{
+checkbox.addEventListener('change', () => {
   document.body.classList.toggle('dark');
   localStorage.setItem("KEY", "value");
   // localStorage.getItem("KEY");
@@ -15,49 +19,44 @@ for (var i = 0, len = inputs.length; i < len; i++) {
   customInput(inputs[i])
 }
 
-function customInput (el) {
+function customInput(el) {
   const fileInput = el.querySelector('[type="file"]')
   const label = el.querySelector('[data-js-label]')
-  
+
   fileInput.onchange =
-  fileInput.onmouseout = function () {
-    if (!fileInput.value) return
-    
-    var value = fileInput.value.replace(/^.*[\\\/]/, '')
-    el.className += ' -chosen'
-    label.innerText = value
-  }
+    fileInput.onmouseout = function () {
+      if (!fileInput.value) return
+
+      var value = fileInput.value.replace(/^.*[\\\/]/, '')
+      el.className += ' -chosen'
+      label.innerText = value
+    }
 }
 
-
-function getQoute() {
-
-            fetch("https://type.fit/api/quotes")
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-
-                    let currentQoute = Math.floor(Math.random() * data.length);
-
-                    let qoute = data[currentQoute].text;
-                    let author = data[currentQoute].author;
-
-
-
-                    document.getElementById('qoute').innerHTML = qoute;
-                    document.getElementById('author').innerHTML = author;
-
-                    setTimeout(() => {
-
-                        document.getElementById('qoute').innerHTML = '';
-                        document.getElementById('author').innerHTML = '';
-
-                    }, 50000);
-
-                });
-        }
-
-
-        setInterval(getQoute, 7200);
+const form = document.querySelector("form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const url = window.location.href + "/src/functions.php";
+  axios
+    .post(url, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
         
+      },
+    })
+    .then((res) => {
+      console.log(res);
+      document.getElementById('content').innerHTML = res.data;
+      document.getElementById("clear").style.display = "block";
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+const clearBtn = document.getElementById('clear');
+clearBtn.addEventListener('click', () => {
+  document.getElementById('content').innerHTML = '';
+  document.getElementById("clear").style.display = "none";
+});
