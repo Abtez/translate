@@ -5,12 +5,12 @@
 
 .file-input {
   display: inline-block;
-  text-align: left;
-  background: #fff;
+  text-align: left; 
   padding: 16px;
   width: 450px;
   position: relative;
   border-radius: 3px;
+ 
 }
 
 .file-input > [type='file'] {
@@ -39,13 +39,13 @@
   color: rgb(146, 96, 96);
 }
 
-.file-input > .label {
+.file-input > .clabel {
   color: rgb(70, 31, 31);
   white-space: nowrap;
   opacity: .3;
 }
 
-.file-input.-chosen > .label {
+.file-input.-chosen > .clabel {
   opacity: 1;
 }
 
