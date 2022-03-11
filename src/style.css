@@ -19,18 +19,3 @@
 .inputfile + label:hover {
     background-color: #1C7BB8;
 }
-
-body{ height:100vh; margin:0; }
-
-header{ min-height:50px; background:lightcyan; }
-/* footer{ min-height:50px; } */
-
-/* Trick */
-body{ 
-  display:flex; 
-  flex-direction:column; 
-}
-
-footer{
-  margin-top:auto; 
-}
