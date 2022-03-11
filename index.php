@@ -115,7 +115,8 @@
                                 <button name="submitpdf" type="submit" id="submitpdf" class="btn btn-primary">Upload</button>
                             </form>
                             <div class="p-4 card text-left">
-                                <p id="content" style="text-align: left;"></p>
+                                <p id="content" style="text-align: left;">
+                                <span id="loading"></span>   </p>
                                 <button id="clear" class="btn btn-primary" style="display:none;">Clear</button>
                             </div>
                         </div>

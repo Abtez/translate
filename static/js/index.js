@@ -36,19 +36,20 @@ function customInput(el) {
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  document.getElementById("loading").style.display = "block";
+  
   const formData = new FormData(form);
   const url = window.location.href + "/src/functions.php";
   axios
     .post(url, formData, {
       headers: {
-        "Content-Type": "multipart/form-data",
-        
+        "Content-Type": "multipart/form-data",        
       },
     })
-    .then((res) => {
-      console.log(res);
+    .then((res) => {    
       document.getElementById('content').innerHTML = res.data;
-      document.getElementById("clear").style.display = "block";
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("clear").style.display = "block";      
     })
     .catch((err) => {
       console.log(err);
