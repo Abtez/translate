@@ -36,8 +36,8 @@ function customInput(el) {
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  document.getElementById("loading").style.display = "block";
-  
+  document.getElementById("loader").style.display = "block";
+
   const formData = new FormData(form);
   const url = window.location.href + "/src/functions.php";
   axios
@@ -47,8 +47,8 @@ form.addEventListener("submit", (e) => {
       },
     })
     .then((res) => {    
-      document.getElementById('content').innerHTML = res.data;
-      document.getElementById("loading").style.display = "none";
+      document.getElementById("loader").style.display = "none";
+      document.getElementById('content').innerHTML = res.data;      
       document.getElementById("clear").style.display = "block";      
     })
     .catch((err) => {

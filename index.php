@@ -71,7 +71,10 @@
                                 </form>
                             </center>
                             <div class="p-4 card text-left">
-                                <p id="content" style="text-align: left;"></p>
+                                <p id="content" style="text-align: left;">
+                                <center>
+                                <img style="display:none;" id="loader" src="static/imgs/loader.gif" alt="" width="150" height="150" srcset=""></p>
+                                </center>
                                 <button id="clear" class="btn btn-primary" style="display:none;">Clear</button>
                             </div>
                         </div>
@@ -115,8 +118,10 @@
                                 <button name="submitpdf" type="submit" id="submitpdf" class="btn btn-primary">Upload</button>
                             </form>
                             <div class="p-4 card text-left">
+                               
                                 <p id="content" style="text-align: left;">
-                                <span id="loading"></span>   </p>
+                                
+                                 </p>
                                 <button id="clear" class="btn btn-primary" style="display:none;">Clear</button>
                             </div>
                         </div>
