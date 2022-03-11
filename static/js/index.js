@@ -43,13 +43,13 @@ form.addEventListener("submit", (e) => {
   axios
     .post(url, formData, {
       headers: {
-        "Content-Type": "multipart/form-data",        
+        "Content-Type": "multipart/form-data",
       },
     })
-    .then((res) => {    
+    .then((res) => {
       document.getElementById("loader").style.display = "none";
-      document.getElementById('content').innerHTML = res.data;      
-      document.getElementById("clear").style.display = "block";      
+      document.getElementById('content').innerHTML = res.data;
+      document.getElementById("clear").style.display = "block";
     })
     .catch((err) => {
       console.log(err);
@@ -60,4 +60,11 @@ const clearBtn = document.getElementById('clear');
 clearBtn.addEventListener('click', () => {
   document.getElementById('content').innerHTML = '';
   document.getElementById("clear").style.display = "none";
+});
+
+const textUploadBtn = document.getElementById('textUpload');
+textUploadBtn.addEventListener('click', () => {
+  let text = document.getElementById('textAreaExample').value;
+  document.getElementById('text-content').innerHTML = text;
+  document.getElementById("clear").style.display = "block";
 });

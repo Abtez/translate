@@ -85,16 +85,14 @@
                         <div id="translate">
                             <h5 class="card-title">Welcome to Text Translator</h5>
                             <br>
-                            <form method="post" enctype="multipart/form-data">
                                 <div class="form-outline">
                                     <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
                                     <label class="form-label" for="textAreaExample">Paste your content here</label>
                                 </div>
                                 <br>
-                                <button name="submitpdf" type="submit" id="submitpdf" class="btn btn-primary">Upload</button>
-                            </form>
+                                <button id="textUpload" class="btn btn-primary">Upload</button>                       
                             <div class="p-4 card text-left">
-                                <p id="content" style="text-align: left;"></p>
+                                <p id="text-content" style="text-align: left;"></p>
                                 <button id="clear" class="btn btn-primary" style="display:none;">Clear</button>
                             </div>
                         </div>
@@ -105,8 +103,6 @@
                         <div id="translate">
                             <h5 class="card-title">Welcome to URL Document</h5>
                             <br>
-                            <form method="post" enctype="multipart/form-data">
-
                                 <div class="form-outline">
                                     <input type="url" id="typeURL" class="form-control" />
                                     <label class="form-label" for="typeURL">URL input</label>
@@ -115,8 +111,8 @@
                                     Here please paste the url to the document.
                                 </div>
                                 <br>
-                                <button name="submitpdf" type="submit" id="submitpdf" class="btn btn-primary">Upload</button>
-                            </form>
+                                <button  type="submit" id="submiurl" class="btn btn-primary">Upload</button>
+                          
                             <div class="p-4 card text-left">
                                
                                 <p id="content" style="text-align: left;">
