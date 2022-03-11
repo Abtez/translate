@@ -36,6 +36,7 @@
                     <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">URL Translate</a>
                 </li>
                 <li class="nav-item" role="presentation">
+                    <div class="nav-link">
                     <div class="mode">
                         <input type="checkbox" class="checkbox" id="checkbox">
                         <label for="checkbox" class="label">
@@ -43,6 +44,7 @@
                             <i class='fas fa-sun'></i>
                             <div class='ball'>
                         </label>
+                    </div>
                     </div>
                 </li>
             </ul>
@@ -105,7 +107,7 @@
                             <h5 class="card-title">Welcome to URL Document</h5>
                             <br>
                             <div class="alert alert-warning alert-dismissible fade show" id='wowAlert' role="alert">                              
-                                <strong>In Development!! </strong> Oops, soory but this feature is in development please come again
+                                <strong>In Development!! </strong> Oops, sorry but this feature is in development please come again
                             </div>
                             <br>
                             <div class="form-outline">
