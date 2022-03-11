@@ -40,7 +40,7 @@
                         <input type="checkbox" class="checkbox" id="checkbox">
                         <label for="checkbox" class="label">
                             <i class="fas fa-moon"></i>
-                            <i class='fas fa-sun'></i>                            
+                            <i class='fas fa-sun'></i>
                             <div class='ball'>
                         </label>
                     </div>
@@ -72,8 +72,9 @@
                             </center>
                             <div class="p-4 card text-left">
                                 <p id="content" style="text-align: left;">
-                                <center>
-                                <img style="display:none;" id="loader" src="static/imgs/loader.gif" alt="" width="150" height="150" srcset=""></p>
+                                    <center>
+                                        <img style="display:none;" id="loader" src="static/imgs/loader.gif" alt="" width="150" height="150" srcset="">
+                                </p>
                                 </center>
                                 <button id="clear" class="btn btn-primary" style="display:none;">Clear</button>
                             </div>
@@ -85,12 +86,12 @@
                         <div id="translate">
                             <h5 class="card-title">Welcome to Text Translator</h5>
                             <br>
-                                <div class="form-outline">
-                                    <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-                                    <label class="form-label" for="textAreaExample">Paste your content here</label>
-                                </div>
-                                <br>
-                                <button id="textUpload" class="btn btn-primary">Upload</button>                       
+                            <div class="form-outline">
+                                <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
+                                <label class="form-label" for="textAreaExample">Paste your content here</label>
+                            </div>
+                            <br>
+                            <button id="textUpload" class="btn btn-primary">Upload</button>
                             <div class="p-4 card text-left">
                                 <p id="text-content" style="text-align: left;"></p>
                                 <button id="clear" class="btn btn-primary" style="display:none;">Clear</button>
@@ -103,21 +104,27 @@
                         <div id="translate">
                             <h5 class="card-title">Welcome to URL Document</h5>
                             <br>
-                                <div class="form-outline">
-                                    <input type="url" id="typeURL" class="form-control" />
-                                    <label class="form-label" for="typeURL">URL input</label>
-                                </div>
-                                <div id="textExample1" class="form-text">
-                                    Here please paste the url to the document.
-                                </div>
-                                <br>
-                                <button  type="submit" id="submiurl" class="btn btn-primary">Upload</button>
-                          
+                            <div class="alert alert-warning alert-dismissible fade show" id='wowAlert' role="alert">                              
+                                <strong>In Development!! </strong> Oops, soory but this feature is in development please come again
+                            </div>
+                            <br>
+                            <div class="form-outline">
+                                <input type="url" id="typeURL" class="form-control" />
+                                <label class="form-label" for="typeURL">URL input</label>
+                            </div>
+                            <div id="textExample1" class="form-text">
+                                Here please paste the url to the document.
+                            </div>
+                            <br>
+                            <span class="d-inline-block" data-mdb-toggle="popover" data-mdb-content="Oops, soory but this feature is in development please come again">
+                                <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>In Development</button>
+                            </span>
+
                             <div class="p-4 card text-left">
-                               
+
                                 <p id="content" style="text-align: left;">
-                                
-                                 </p>
+
+                                </p>
                                 <button id="clear" class="btn btn-primary" style="display:none;">Clear</button>
                             </div>
                         </div>
