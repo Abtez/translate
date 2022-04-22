@@ -1,0 +1,6 @@
+{
+    "require": {
+        "smalot/pdfparser": "^2.0",
+        "lukemadhanga/php-document-parser": "^0.1.5"
+    }
+}
