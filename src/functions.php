@@ -23,7 +23,7 @@ $logger = new class {
 
         $this->log = date("D, d M Y H:i:s") . ' - ' . $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['REMOTE_ADDR'] . ' - ' . "$message" . PHP_EOL;
 
-        $logFile =  __DIR__."/../static/log.log";
+        $logFile =  __DIR__."/../static/logs.log";
 
         $file = fopen($logFile, 'a+');
         fwrite($file, $this->log);
