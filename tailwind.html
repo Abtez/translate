@@ -48,23 +48,29 @@
                                 class="font-medium text-gray-800 dark:text-white">
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                     for="file_input">Select document to parse</label>
-                                <input
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type='file' name="files"
-                                    accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf">
-                                <button name="submitpdf" type="submit" id="submitpdf"
-                                    class="btn btn-primary">Upload</button>
+                                <div class="flex">
+                                    <input
+                                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                        id="file_input" type='file' name="files"
+                                        accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf" />
+                                    <button type="button"
+                                        class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Purple</button>
 
+                                    <!-- <button name="submitpdf" type="submit" id="submitpdf"
+                                        class="block w-full border-gray-600">Upload</button> -->
+                                </div>
                         </p>
                     </div>
                     <div class="hidden p-4 rounded-lg bg-gray-100 dark:bg-gray-800" id="text" role="tabpanel"
                         aria-labelledby="text-tab">
-                        <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong
-                                class="font-medium text-gray-800 dark:text-white">Text tab's associated
-                                content</strong>.
-                            Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript
-                            swaps
-                            classes to control the content visibility and styling.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the </p>
+
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                            message</label>
+                        <textarea id="message" rows="4"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Leave a comment..."></textarea>
+
                     </div>
                     <div class="hidden p-4 rounded-lg bg-gray-100 dark:bg-gray-800" id="url" role="tabpanel"
                         aria-labelledby="url-tab">
