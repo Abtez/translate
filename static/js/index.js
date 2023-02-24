@@ -55,6 +55,8 @@ form.addEventListener("submit", (e) => {
       document.getElementById("doc-label").innerText = "The following have been found to be possible LI's within the file";
       document.getElementById("doc-label-guide").innerText = "Confirm and copy them to your clipboard";
 
+      document.getElementById("doc-content").style.display = "block";
+
       document.getElementById('content').innerHTML = res.data.text;
       document.getElementById('flis').innerHTML = res.data.lis_found;
 

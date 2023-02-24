@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-50">
@@ -43,22 +50,23 @@
                     </ul>
                 </header>
                 <div id="myTabContent">
-                    <div class="hidden p-4 rounded-lg bg-gray-100 dark:bg-gray-800" id="document" role="tabpanel"
+                    <div class="hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800" id="document" role="tabpanel"
                         aria-labelledby="document-tab">
-                        <p id="doc-label" class="text-lg text-center font-medium text-gray-900 dark:text-white">Welcome to Document
+                        <p id="doc-label" class="text-lg text-center font-medium text-gray-900 dark:text-white">Welcome
+                            to Document
                             Parser</p>
-                        <label id="doc-label-guide" class="block mb-2 text-sm text-center text-gray-500 dark:text-gray-400" for="file_input"
+                        <label id="doc-label-guide"
+                            class="block mb-2 text-sm text-center text-gray-500 dark:text-gray-400" for="file_input"
                             data-js-label>Select document to parse</label>
                         <form method="post" enctype="multipart/form-data"
                             class="flex flex-row justify-center items-center">
 
                             <!-- LI's -->
-                            <div style="display:none;" id="lis-found" class="bg-gray-100 p-2">
-                                <p id="flis"></p>
+
+                            <div style="display:none;" id="lis-found" class="bg-gray-50 rounded-lg p-2">
+                                <p id="flis" class="text-sm"></p>
                             </div>
-                            <button style="display:none;" id="clear" type="button"
-                                class="mt-1 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Reset</button>
-                         
+
                             <!-- FORM -->
                             <input
                                 class="mr-2 block w-3/4 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -67,15 +75,15 @@
                             <button name="submitpdf" type="submit" id="submitpdf"
                                 class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Parse</button>
                         </form>
-                        <section id="doc-content" class="mt-4 p-2 rounded-lg bg-white">
-                            <div id="content" class="p-2 overflow-y-auto h-80">
-                                <center>
-                                    <img style="display:none;" id="loader" src="static/imgs/loader.gif" alt=""
-                                        width="150" height="150" srcset=""></p>
-                                </center>
-                            </div>
-
+                        <center>
+                            <img style="display:none;" id="loader" src="static/imgs/loader.gif" alt="" width="150"
+                                height="150" srcset=""></p>
+                        </center>
+                        <section id="doc-content" style="display:none;" class="mt-4 p-2 rounded-lg bg-white">
+                            <div id="content" class="p-2 overflow-y-auto h-80"></div>
                         </section>
+                        <button style="display:none;" id="clear" type="button"
+                            class="mt-1 float-right clearfix text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Reset</button>
                     </div>
                     <div class="hidden p-4 rounded-lg bg-gray-100 dark:bg-gray-800" id="text" role="tabpanel"
                         aria-labelledby="text-tab">
