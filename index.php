@@ -37,14 +37,14 @@
                 </li>
                 <li class="nav-item" role="presentation">
                     <div class="nav-link">
-                    <div class="mode">
-                        <input type="checkbox" class="checkbox" id="checkbox">
-                        <label for="checkbox" class="label">
-                            <i class="fas fa-moon"></i>
-                            <i class='fas fa-sun'></i>
-                            <div class='ball'>
-                        </label>
-                    </div>
+                        <div class="mode">
+                            <input type="checkbox" class="checkbox" id="checkbox">
+                            <label for="checkbox" class="label">
+                                <i class="fas fa-moon"></i>
+                                <i class='fas fa-sun'></i>
+                                <div class='ball'>
+                            </label>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -106,7 +106,7 @@
                         <div id="translate">
                             <h5 class="card-title">Welcome to URL Document</h5>
                             <br>
-                            <div class="alert alert-warning alert-dismissible fade show" id='wowAlert' role="alert">                              
+                            <div class="alert alert-warning alert-dismissible fade show" id='wowAlert' role="alert">
                                 <strong>In Development!! </strong> Oops, sorry but this feature is in development please come again
                             </div>
                             <br>
