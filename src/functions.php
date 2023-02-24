@@ -71,7 +71,7 @@ if ($_FILES['files']) {
     }
     if (!empty($text)) {
         $logger->log("INFO: Successfully parsed " . $_FILES['files']['name'] . " in  $execution_time seconds!");
-        $messages['text'] = nl2br($text);
+        $messages['text'] = $text;
     } else {
         $logger->log('ERROR: Something has happened!');
         $messages['error'] = "ERROR: Something has happened";

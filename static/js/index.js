@@ -72,6 +72,16 @@ form.addEventListener("submit", (e) => {
 const clearBtn = document.getElementById('clear');
 clearBtn.addEventListener('click', () => {
   document.getElementById('content').innerHTML = '';
+
+  document.getElementById("doc-label").innerText = "Welcome to Document Parser";
+  document.getElementById("doc-label-guide").innerText = "Select document to parse";
+
+  document.getElementById("submitpdf").style.display = "block";
+  document.getElementById("file_input").style.display = "block";
+
+  document.querySelector("form").reset();
+
+  document.getElementById("doc-content").style.display = "none";
   document.getElementById("clear").style.display = "none";
 });
 
