@@ -109,7 +109,7 @@
                                     <label class="form-label" for="typeURL">URL input</label>
                                 </div>
                                 <div id="textExample1" class="form-text">
-                                    Here please paste the url to the document.
+                                    Here please paste the url to the document...
                                 </div>
                                 <br>
                                 <button  type="submit" id="submiurl" class="btn btn-primary">Upload</button>
