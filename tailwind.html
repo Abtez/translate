@@ -15,10 +15,10 @@
 </head>
 
 <body class="bg-gray-50">
-    <main class="pt-8 pb-16 lg:pt-16 lg:pb-24">
-        <section class="flex justify-between px-4 mx-auto max-w-screen-xl ">
+    <main class="pt-4 pb-10 lg:pt-16 lg:pb-24">
+        <section class="flex justify-between px-2 mx-auto max-w-screen-2xl ">
             <article
-                class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+                class="mx-auto w-full max-w-4xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
                 <header class="mb-4 border-b border-gray-200 dark:border-gray-700">
                     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab"
                         data-tabs-toggle="#myTabContent" role="tablist">
@@ -58,13 +58,14 @@
                             <button name="submitpdf" type="submit" id="submitpdf"
                                 class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Parse</button>
                         </form>
-                        <section id="doc-content" class="mt-4 p-4 rounded-lg bg-white">
-                            <p id="content"></p>
-                            <center>
-                                <img style="display:none;" id="loader" src="static/imgs/loader.gif" alt="" width="150"
-                                    height="150" srcset=""></p>
-                            </center>
-                            <button id="clear" type="button"
+                        <section id="doc-content" class="mt-4 p-2 rounded-lg bg-white">
+                            <div id="content" class="p-2 overflow-y-auto h-80">
+                                <center>
+                                    <img style="display:none;" id="loader" src="static/imgs/loader.gif" alt="" width="150"
+                                        height="150" srcset=""></p>
+                                </center>
+                            </div>
+                            <button style="display:none;" id="clear" type="button"
                                 class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Clear</button>
                         </section>
                     </div>
