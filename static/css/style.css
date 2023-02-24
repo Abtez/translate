@@ -93,12 +93,12 @@
 
 body.dark {
   background-color: #292c35;
-  color: whitesmoke !important;
+  color: whitesmoke;
 }
 
 body.dark .card {
   background-color: #292c35;
-  color: whitesmoke !important;
+  color: whitesmoke;
 }
 
 .checkbox {

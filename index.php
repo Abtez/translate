@@ -1,15 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="title" content="Test P-translate">
+    <meta name="title" content="P-translate">
     <meta name="description" content="A Simple way of parsing pdf, docx, text or rtf files so as to identify certain keywords using pearl">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="author" content="Peter Munene, Abzed Mohamed Maxwell Kanuro">
+    <meta name="author" content="Peter Munene, Abzed Mohamed Maxwell Kanoru">
     <link rel="shortcut icon" href="static/imgs/translate.svg" type="image/svg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet" />
@@ -36,15 +37,13 @@
                     <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">URL Translate</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <div class="nav-link">
-                        <div class="mode">
-                            <input type="checkbox" class="checkbox" id="checkbox">
-                            <label for="checkbox" class="label">
-                                <i class="fas fa-moon"></i>
-                                <i class='fas fa-sun'></i>
-                                <div class='ball'>
-                            </label>
-                        </div>
+                    <div class="mode">
+                        <input type="checkbox" class="checkbox" id="checkbox">
+                        <label for="checkbox" class="label">
+                            <i class="fas fa-moon"></i>
+                            <i class='fas fa-sun'></i>                            
+                            <div class='ball'>
+                        </label>
                     </div>
                 </li>
             </ul>
@@ -74,9 +73,8 @@
                             </center>
                             <div class="p-4 card text-left">
                                 <p id="content" style="text-align: left;">
-                                    <center>
-                                        <img style="display:none;" id="loader" src="static/imgs/loader.gif" alt="" width="150" height="150" srcset="">
-                                </p>
+                                <center>
+                                <img style="display:none;" id="loader" src="static/imgs/loader.gif" alt="" width="150" height="150" srcset=""></p>
                                 </center>
                                 <button id="clear" class="btn btn-primary" style="display:none;">Clear</button>
                             </div>
@@ -88,12 +86,12 @@
                         <div id="translate">
                             <h5 class="card-title">Welcome to Text Translator</h5>
                             <br>
-                            <div class="form-outline">
-                                <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-                                <label class="form-label" for="textAreaExample">Paste your content here</label>
-                            </div>
-                            <br>
-                            <button id="textUpload" class="btn btn-primary">Upload</button>
+                                <div class="form-outline">
+                                    <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
+                                    <label class="form-label" for="textAreaExample">Paste your content here</label>
+                                </div>
+                                <br>
+                                <button id="textUpload" class="btn btn-primary">Upload</button>                       
                             <div class="p-4 card text-left">
                                 <p id="text-content" style="text-align: left;"></p>
                                 <button id="clear" class="btn btn-primary" style="display:none;">Clear</button>
@@ -106,27 +104,21 @@
                         <div id="translate">
                             <h5 class="card-title">Welcome to URL Document</h5>
                             <br>
-                            <div class="alert alert-warning alert-dismissible fade show" id='wowAlert' role="alert">
-                                <strong>In Development!! </strong> Oops, sorry but this feature is in development please come again
-                            </div>
-                            <br>
-                            <div class="form-outline">
-                                <input type="url" id="typeURL" class="form-control" />
-                                <label class="form-label" for="typeURL">URL input</label>
-                            </div>
-                            <div id="textExample1" class="form-text">
-                                Here please paste the url to the document.
-                            </div>
-                            <br>
-                            <span class="d-inline-block" data-mdb-toggle="popover" data-mdb-content="Oops, soory but this feature is in development please come again">
-                                <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>In Development</button>
-                            </span>
-
+                                <div class="form-outline">
+                                    <input type="url" id="typeURL" class="form-control" />
+                                    <label class="form-label" for="typeURL">URL input</label>
+                                </div>
+                                <div id="textExample1" class="form-text">
+                                    Here please paste the url to the document.
+                                </div>
+                                <br>
+                                <button  type="submit" id="submiurl" class="btn btn-primary">Upload</button>
+                          
                             <div class="p-4 card text-left">
-
+                               
                                 <p id="content" style="text-align: left;">
-
-                                </p>
+                                
+                                 </p>
                                 <button id="clear" class="btn btn-primary" style="display:none;">Clear</button>
                             </div>
                         </div>
@@ -143,12 +135,8 @@
             <div class="card-body">
                 <h5 class="card-title">The following have been found to be possible LI's within the file</h5>
                 <p class="card-text">Confirm and copy them to your clipboard</p>
-
-                <script>
-                    var Lis = document.getElementsByClassName("pearl-hilighted-word").value;
-                    // Lis = document.querySelectorAll('.pearl-highlighted-word');
-                    //  console.log(Lis);
-                </script>
+ <p id="flis"></p>
+              
                 <script>
                     var closebtns = document.getElementsByClassName("close");
                     var i;
@@ -160,6 +148,7 @@
                         });
                     }
                 </script>
+                <br>
                 <a href="#" onclick="copyText()" class="btn btn-primary">Copy LI's</a>
             </div>
         </div>
@@ -204,7 +193,7 @@
                                 <a href="https://github.com/munenepeter">Peter</a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="https://github.com/kemejere">Max</a>
+                                <a href="https://github.com/kejereme">Max</a>
                             </li>
                         </ul>
                     </div>

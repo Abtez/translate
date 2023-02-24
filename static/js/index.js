@@ -47,13 +47,16 @@ form.addEventListener("submit", (e) => {
       },
     })
     .then((res) => {
+      console.log(res);
       document.getElementById("loader").style.display = "none";
-      document.getElementById('content').innerHTML = res.data;
+      document.getElementById('content').innerHTML = res.data.text;
+      document.getElementById('flis').innerHTML = res.data.lis_found;
       document.getElementById("clear").style.display = "block";
     })
     .catch((err) => {
       console.log(err);
     });
+  
 });
 
 const clearBtn = document.getElementById('clear');
