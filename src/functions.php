@@ -73,7 +73,7 @@ if ($_FILES['files']) {
         $logger->log("INFO: Successfully parsed " . $_FILES['files']['name'] . " in  $execution_time seconds!");
         $messages['text'] = $text;
     } else {
-        $logger->log('ERROR: Something has happened!');
+        $logger->log('ERROR: Couldn\'t get the text!');
         $messages['error'] = "ERROR: Something has happened";
     }
 
