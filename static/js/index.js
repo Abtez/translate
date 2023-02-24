@@ -4,20 +4,20 @@
 // });
 
 
-const checkbox = document.getElementById('checkbox');
+// const checkbox = document.getElementById('checkbox');
 
-checkbox.addEventListener('change', () => {
-  document.body.classList.toggle('dark');
-  localStorage.setItem("KEY", "value");
-  // localStorage.getItem("KEY");
-})
+// checkbox.addEventListener('change', () => {
+//   document.body.classList.toggle('dark');
+//   localStorage.setItem("KEY", "value");
+//   // localStorage.getItem("KEY");
+// })
 
-// localStorage.setItem("Max", "Keme");
-var inputs = document.querySelectorAll('.file-input')
+// // localStorage.setItem("Max", "Keme");
+// var inputs = document.querySelectorAll('.file-input')
 
-for (var i = 0, len = inputs.length; i < len; i++) {
-  customInput(inputs[i])
-}
+// for (var i = 0, len = inputs.length; i < len; i++) {
+//   customInput(inputs[i])
+// }
 
 function customInput(el) {
   const fileInput = el.querySelector('[type="file"]')
@@ -39,7 +39,7 @@ form.addEventListener("submit", (e) => {
   document.getElementById("loader").style.display = "block";
 
   const formData = new FormData(form);
-  const url = window.location.href + "/src/functions.php";
+  const url = "/src/functions.php";
   axios
     .post(url, formData, {
       headers: {
@@ -50,13 +50,13 @@ form.addEventListener("submit", (e) => {
       console.log(res);
       document.getElementById("loader").style.display = "none";
       document.getElementById('content').innerHTML = res.data.text;
-      document.getElementById('flis').innerHTML = res.data.lis_found;
+      // document.getElementById('flis').innerHTML = res.data.lis_found;
       document.getElementById("clear").style.display = "block";
     })
     .catch((err) => {
       console.log(err);
     });
-  
+
 });
 
 const clearBtn = document.getElementById('clear');
@@ -65,7 +65,7 @@ clearBtn.addEventListener('click', () => {
   document.getElementById("clear").style.display = "none";
 });
 
-const textUploadBtn = document.getElementById('textUpload');
+const textUploadBtn = document.getElementById('submittext');
 textUploadBtn.addEventListener('click', () => {
   let text = document.getElementById('textAreaExample').value;
   document.getElementById('text-content').innerHTML = text;

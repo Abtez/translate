@@ -34,6 +34,7 @@ $logger = new class {
 
 if ($_FILES['files']) {
 
+  
     $start_time = microtime(true);
     $logger->log('INFO: Succesfully uploaded ' . json_encode($_FILES));
 

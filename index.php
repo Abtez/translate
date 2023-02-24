@@ -189,19 +189,7 @@
                             <li class="list-inline-item">
                                 <a href="https://github.com/Abzed">Abzed</a>
                             </li>
-                            <li class="list-inline-item">
-                                <a href="https://github.com/munenepeter">Peter</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://github.com/kejereme">Max</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-    </footer>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
-    <script src="static/js/index.js"></script>
+<script src="static/js/index.js"></script>
     <script>
         var myVar;
 
@@ -213,7 +201,19 @@
             document.getElementById("loader").style.display = "none";
             document.getElementById("myDiv").style.display = "block";
         }
-    </script>
+    </script>                            <li class="list-inline-item">
+                                <a href="https://github.com/munenepeter">Peter</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://github.com/kejereme">Max</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </footer>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+    
 
 </body>
 

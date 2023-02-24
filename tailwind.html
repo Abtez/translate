@@ -11,6 +11,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body class="bg-gray-50">
@@ -46,17 +47,23 @@
                         aria-labelledby="document-tab">
                         <p class="text-lg text-center font-medium text-gray-900 dark:text-white">Welcome to Document
                             Parser</p>
-                        <label class="block mb-2 text-sm text-center text-gray-500 dark:text-gray-400"
-                            for="file_input">Select document to parse</label>
-                        <div class="flex flex-row justify-center items-center">
+                        <label class="block mb-2 text-sm text-center text-gray-500 dark:text-gray-400" for="file_input"
+                            data-js-label>Select document to parse</label>
+                        <form method="post" enctype="multipart/form-data"
+                            class="flex flex-row justify-center items-center">
                             <input
                                 class="mr-2 block w-3/4 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                 id="file_input" type='file' name="files"
                                 accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf" />
                             <button name="submitpdf" type="submit" id="submitpdf"
                                 class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Parse</button>
-                        </div>
+                        </form>
                         <section id="doc-content" class="mt-4 p-4 rounded-lg bg-white">
+                            <p id="content"></p>
+                            <center>
+                                <img style="display:none;" id="loader" src="static/imgs/loader.gif" alt="" width="150"
+                                    height="150" srcset=""></p>
+                            </center>
                             <button id="clear" type="button"
                                 class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Clear</button>
                         </section>
@@ -74,9 +81,9 @@
                             placeholder="Paste to parse"></textarea>
 
                         <button name="submittext" type="submit" id="submittext"
-                            class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Parse</button>
+                            class="my-2 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Parse</button>
                         <!-- Text content -->
-                        <section id="text-content" class="mt-4 p-4 rounded-lg bg-white">
+                        <section id="text-content" class="mt-2 p-4 rounded-lg bg-white">
                             <button id="clear" type="button"
                                 class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Clear</button>
                         </section>
@@ -95,12 +102,30 @@
                             <button name="submiturl" type="submit" id="submiturl"
                                 class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Parse</button>
                         </div>
+                        <!-- URL content -->
+                        <section id="url-content" class="mt-2 p-4 rounded-lg bg-white">
+                            <button id="clear" type="button"
+                                class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Clear</button>
+                        </section>
                     </div>
 
                 </div>
             </article>
         </section>
     </main>
+    <script src="static/js/index.js"></script>
+    <script>
+        var myVar;
+
+        function myFunction() {
+            myVar = setTimeout(showPage, 3000);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        }
+    </script>
 </body>
 
 </html>
