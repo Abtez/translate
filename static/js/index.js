@@ -71,6 +71,8 @@ form.addEventListener("submit", (e) => {
 
 const clearBtn = document.getElementById('clear');
 clearBtn.addEventListener('click', () => {
+  document.getElementById("lis-found").style.display = "none";
+
   document.getElementById('content').innerHTML = '';
 
   document.getElementById("doc-label").innerText = "Welcome to Document Parser";
