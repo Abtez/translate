@@ -21,7 +21,7 @@ if ($_FILES['files']) {
         $execution_time = round(($end_time - $start_time), 4);
     } catch (\Exception $e) {
         logger('ERROR: '. $e->getMessage());
-        $messages['error'] = '<p class="p-4 text-red-500 text-sm font-semibold"> Something happened and could not get the text of your file, but since you do\'nt pay me, try something else  </p>';
+        $messages['error'] = '<p class="p-4 text-red-500 text-sm font-semibold text-center">I know you have no idea what happened, so try contacting the dev for more</p>';
     }
 
     if (!empty($text)) {
