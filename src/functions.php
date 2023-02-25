@@ -13,27 +13,18 @@ header("Access-Control-Allow-Methods: PUT, GET, POST");
 
 include '../vendor/autoload.php';
 
+include 'funcs.php';
+
 $messages = [];
 
-$logger = new class {
 
-    public String $log = "";
-
-    public function log(String $message) {
-
-        $this->log = date("D, d M Y H:i:s") . ' - ' . $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['REMOTE_ADDR'] . ' - ' . "$message" . PHP_EOL;
-
-        $logFile =  __DIR__."/../static/logs.log";
-
-        $file = fopen($logFile, 'a+');
-        fwrite($file, $this->log);
-        fclose($file);
-    }
-};
 
 
 if ($_FILES['files']) {
+   echo mime_content_type($_FILES['files']['tmp_name']);
 
+
+   exit;
   
     $start_time = microtime(true);
     $logger->log('INFO: Succesfully uploaded ' . json_encode($_FILES));
@@ -81,44 +72,11 @@ if ($_FILES['files']) {
   
 }
 
-$lis_found = [];
-
-$githubLis = json_decode(file_get_contents("https://munenepeter.github.io/my-file-tracker/data/datas.json"));
-
-$fileText = trim($text);
-
- 
- 
-$found = false;
-
-foreach ($githubLis as $githubLi) {
-    if (strpos($fileText, $githubLi->name) !== false) {
-        $found = true;
-        $lis_found[] = $githubLi->name;
-    }
-    $abbrs = explode(',', trim($githubLi->abbr));
-
-    foreach ($abbrs as $abbr) {
-        if (is_array($abbr)) {
-            foreach ($abbr as $sub_abbr) {
-                if (strpos($fileText, $sub_abbr) !== false) {
-                    $found = true;
-                    $lis_found[] = $githubLi->name;
-                }
-            }
-        }
-
-        if (strpos($fileText, $abbr) !== false) {
-            $found = true;
-            $lis_found[] = $githubLi->name;
-        }
-    }
-}
-
-if (!$found) {
+//search for LIS
+if (!empty(getLisInText($text, getAllLis()))) {
+    $messages['lis_found'] =  implode(", ", getLisInText($text, getAllLis()));
+} else {
     $messages['li_error'] = "No LI's Found!";
-}else{
-    $messages['lis_found'] =  implode(',', array_unique($lis_found));
 }
 
 echo json_encode($messages);
