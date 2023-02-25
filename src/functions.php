@@ -1,65 +1,104 @@
 <?php
 
-header('Content-Type: application/json; charset=utf-8');
+use Smalot\PdfParser\Parser;
+use LukeMadhanga\DocumentParser;
 
-header("Access-Control-Allow-Origin: *");
+include '../vendor/autoload.php';
 
-header("Access-Control-Allow-Methods: PUT, GET, POST");
+//custom logger
+function logger(String $message) {
 
+    $log = date("D, d M Y H:i:s") . ' - ' . $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['REMOTE_ADDR'] . ' - ' . "$message" . PHP_EOL;
 
+    $logFile =  __DIR__ . "/../static/logs.log";
 
-include 'funcs.php';
+    $file = fopen($logFile, 'a+');
+    fwrite($file, $log);
+    fclose($file);
+}
 
-$messages = [];
+function getAllLis() {
+    //from db
+    $databaseLis = json_decode(file_get_contents("https://munenepeter.github.io/my-file-tracker/data/datas.json"));
 
-if ($_FILES['files']) {
-    $start_time = microtime(true);
-    logger('INFO: Succesfully uploaded ' . json_encode($_FILES));
-    try {
-        $text = readUploadedFile($_FILES['files']['tmp_name']);
-        $end_time = microtime(true);
-        $execution_time = round(($end_time - $start_time), 4);
-    } catch (\Exception $e) {
-        logger('ERROR: '. $e->getMessage());
-        $messages['error'] = '<p class="p-4 text-red-500 text-sm font-semibold text-center">You have no idea what happened huh? Well so do I</p>';
+    $allLis = [];
+
+    foreach ($databaseLis as $databaseLi) {
+        $allLis[] = $databaseLi->name;
+
+        $abbrs = explode(',', trim($databaseLi->abbr));
+
+        foreach ($abbrs as $abbr) {
+            $allLis[] = trim($abbr);
+        }
     }
+    return   $allLis;
+}
 
-    if (!empty($text)) {
-        logger("INFO: Successfully parsed " . $_FILES['files']['name'] . " in  $execution_time seconds!");
-        $messages['text'] = $text;
-    } else {
-        logger('ERROR: Couldn\'t get the text!');
-        $messages['lis_found'] = "No LI's Found!";
-        echo json_encode($messages);
+
+function getLisInText($text, $lis) {
+    $foundWords = [];
+
+    $chunkSize = 242;
+    $searchWordChunks = array_chunk(array_unique($lis), $chunkSize);
+
+    // Search for each group of words separately
+    foreach ($searchWordChunks as $chunk) {
+        $escapedSearchWords = array_map(function ($word) {
+            return preg_quote($word, '/');
+        }, $chunk);
+        $pattern = '/\b(' . implode('|', $escapedSearchWords) . ')\b/i';
+        preg_match_all($pattern, $text, $matches);
+        //remove duplicate & empty elements
+        $foundWords = array_filter(array_unique(array_merge($foundWords, $matches[0])));
+    }
+    return $foundWords;
+}
+//parse PDF files
+function getPdfText($filename) {
+    try {
+        $parser = new Parser();
+        $pdf = $parser->parseFile($filename);
+        $text = $pdf->getText();
+        logger('INFO: Trying to parse ' . implode(', ', $pdf->getDetails()));
+    } catch (\Exception $e) {
+        throw new \Exception($e->getMessage());
+        logger('ERROR: An exception was called ' . $e->getMessage());
         return;
     }
+    return $text;
 }
-
-//search for LIS
-if (!empty(getLisInText($text, getAllLis()))) {
-    $messages['lis_found'] =  implode(", ", getLisInText($text, getAllLis()));
-} else {
-    $messages['lis_found'] = "No LI's Found!";
-}
-
-echo json_encode($messages);
-
-clearstatcache();
-exit;
-
-if (isset($_GET['url'])) {
-    $url = urldecode($_GET['url']); // Decode URL-encoded string
-
-
-    // Use basename() function to return the base name of file
-    $file_name = basename($url);
-
-    // Use file_get_contents() function to get the file
-    // from url and use file_put_contents() function to
-    // save the file by using base name
-    if (file_put_contents($file_name, file_get_contents($url))) {
-        echo "File downloaded successfully";
-    } else {
-        echo "File downloading failed.";
+//parse word doc
+function getWordText($file) {
+    try {
+        $text = DocumentParser::parseFromFile($file);
+    } catch (\Exception $e) {
+        throw new \Exception($e->getMessage());
+        logger('ERROR: An exception was called ' . $e->getMessage());
+        return;
     }
+    return $text;
+}
+// function getExcelText($file){
+//     throw new \Exception("This is yet to be supported!");
+// }
+function readUploadedFile($file) {
+    //pdf
+    if (mime_content_type($file) === 'application/pdf') {
+        $text = getPdfText($file);
+    }
+    //word
+    if (mime_content_type($file) === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+        $text = getWordText($file);
+    }
+    //Workbook
+    if (mime_content_type($file) === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+        $text = getWordText($file);
+    }
+    //plain text
+    if (mime_content_type($file) === 'text/plain') {
+        $text = file_get_contents($file);
+    }
+
+    return $text;
 }
