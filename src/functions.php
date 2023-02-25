@@ -20,8 +20,7 @@ if ($_FILES['files']) {
         $end_time = microtime(true);
         $execution_time = round(($end_time - $start_time), 4);
     } catch (\Exception $e) {
-        $messages['error'] = '<div class="card" style="color:red;bg-color:red;"> <p class="p-4">' . $e->getMessage() .  '</p> </div> </div>';
-        return;
+        $messages['error-core'] = '<div class="card" style="color:red;bg-color:red;"> <p class="p-4">' . $e->getMessage() .  '</p> </div> </div>';
     }
 
     if (!empty($text)) {
@@ -30,6 +29,9 @@ if ($_FILES['files']) {
     } else {
         logger('ERROR: Couldn\'t get the text!');
         $messages['error'] = "ERROR: Something has happened";
+        $messages['lis_found'] = "No LI's Found!";
+        echo json_encode($messages);
+        return;
     }
 }
 
