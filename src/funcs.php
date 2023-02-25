@@ -54,7 +54,7 @@ function getLisInText($text, $lis) {
     }
     return $foundWords;
 }
-
+//parse PDF files
 function getPdfText($filename) {
     try {
         $parser = new Parser();
