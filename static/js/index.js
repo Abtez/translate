@@ -58,7 +58,6 @@ form.addEventListener("submit", (e) => {
       document.getElementById("doc-content").style.display = "block";
 
       document.getElementById('content').innerHTML = res.data.text;
-      document.getElementById('content').innerHTML = res.data.error;
       document.getElementById('flis').innerHTML = res.data.lis_found;
 
       document.getElementById("clear").style.display = "block";

@@ -8,7 +8,7 @@ header("Access-Control-Allow-Methods: PUT, GET, POST");
 
 
 
-include 'funcs.php';
+include 'functions.php';
 
 $messages = [];
 
@@ -21,7 +21,7 @@ if ($_FILES['files']) {
         $execution_time = round(($end_time - $start_time), 4);
     } catch (\Exception $e) {
         logger('ERROR: '. $e->getMessage());
-        $messages['error'] = '<p class="p-4 text-red-500 text-sm font-semibold text-center">You have no idea what happened huh? Well so do I</p>';
+        $messages['text'] = '<p class="p-4 text-red-500 text-sm font-semibold text-center">You have no idea what happened huh? Well so do I</p>';
     }
 
     if (!empty($text)) {
