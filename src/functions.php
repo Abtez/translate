@@ -37,7 +37,7 @@ if ($_FILES['files']) {
 if (!empty(getLisInText($text, getAllLis()))) {
     $messages['lis_found'] =  implode(", ", getLisInText($text, getAllLis()));
 } else {
-    $messages['li_error'] = "No LI's Found!";
+    $messages['lis_found'] = "No LI's Found!";
 }
 
 echo json_encode($messages);

@@ -79,9 +79,9 @@ function getWordText($file) {
     }
     return $text;
 }
-function getExcelText($file){
-    throw new \Exception("This is yet to be supported!");
-}
+// function getExcelText($file){
+//     throw new \Exception("This is yet to be supported!");
+// }
 function readUploadedFile($file) {
     //pdf
     if (mime_content_type($file) === 'application/pdf') {
@@ -93,7 +93,7 @@ function readUploadedFile($file) {
     }
     //Workbook
     if (mime_content_type($file) === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
-        $text = getExcelText($file);
+        $text = getWordText($file);
     }
     //plain text
     if (mime_content_type($file) === 'text/plain') {
