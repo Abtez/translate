@@ -79,6 +79,9 @@ function getWordText($file) {
     }
     return $text;
 }
+function getExcelText($file){
+    throw new \Exception("This is yet to be supported!");
+}
 function readUploadedFile($file) {
     //pdf
     if (mime_content_type($file) === 'application/pdf') {
