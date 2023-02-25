@@ -39,7 +39,7 @@ form.addEventListener("submit", (e) => {
   document.getElementById("loader").style.display = "block";
 
   const formData = new FormData(form);
-  const url = "/src/functions.php";
+  const url = "/src/parse.php";
   axios
     .post(url, formData, {
       headers: {
