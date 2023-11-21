@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="author" content="Peter Munene, Abzed Mohamed Maxwell Kanuro">
+    <meta name="author" content="Peter Munene, Abzed Mohamed Maxwell Kanoru">
     <link rel="shortcut icon" href="static/imgs/translate.svg" type="image/svg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet" />
@@ -108,7 +108,7 @@
                                     <label class="form-label" for="typeURL">URL input</label>
                                 </div>
                                 <div id="textExample1" class="form-text">
-                                    Here please paste the url to the document.
+                                    Here please paste the url to the document...
                                 </div>
                                 <br>
                                 <button  type="submit" id="submiurl" class="btn btn-primary">Upload</button>
@@ -134,12 +134,8 @@
             <div class="card-body">
                 <h5 class="card-title">The following have been found to be possible LI's within the file</h5>
                 <p class="card-text">Confirm and copy them to your clipboard</p>
-
-                <script>
-                    var Lis = document.getElementsByClassName("pearl-hilighted-word").value;
-                    // Lis = document.querySelectorAll('.pearl-highlighted-word');
-                    //  console.log(Lis);
-                </script>
+ <p id="flis"></p>
+              
                 <script>
                     var closebtns = document.getElementsByClassName("close");
                     var i;
@@ -151,6 +147,7 @@
                         });
                     }
                 </script>
+                <br>
                 <a href="#" onclick="copyText()" class="btn btn-primary">Copy LI's</a>
             </div>
         </div>
@@ -191,19 +188,7 @@
                             <li class="list-inline-item">
                                 <a href="https://github.com/Abzed">Abzed</a>
                             </li>
-                            <li class="list-inline-item">
-                                <a href="https://github.com/munenepeter">Peter</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://github.com/kejereme">Max</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-    </footer>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
-    <script src="static/js/index.js"></script>
+<script src="static/js/index.js"></script>
     <script>
         var myVar;
 
@@ -215,8 +200,19 @@
             document.getElementById("loader").style.display = "none";
             document.getElementById("myDiv").style.display = "block";
         }
-    </script>
+    </script>                            <li class="list-inline-item">
+                                <a href="https://github.com/munenepeter">Peter</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://github.com/kejereme">Max</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </footer>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+    
 
 </body>
-
 </html>

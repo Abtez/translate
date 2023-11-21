@@ -1,103 +1,105 @@
 <?php
 
-
-
-header('Content-Type: application/json; charset=utf-8');
-
-header("Access-Control-Allow-Origin: *");
-
-header("Access-Control-Allow-Methods: PUT, GET, POST");
-
+use Smalot\PdfParser\Parser;
+use LukeMadhanga\DocumentParser;
 
 include '../vendor/autoload.php';
 
-$logger = new class {
+//custom logger
+function logger(String $message) {
 
-    public String $log = "";
+    $log = date("D, d M Y H:i:s") . ' - ' . $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['REMOTE_ADDR'] . ' - ' . "$message" . PHP_EOL;
 
-    public function log(String $message) {
+    $logFile =  __DIR__ . "/../static/logs.log";
 
-        $this->log = date("D, d M Y H:i:s") . ' - ' . $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['REMOTE_ADDR'] . ' - ' . "$message" . PHP_EOL;
+    $file = fopen($logFile, 'a+');
+    fwrite($file, $log);
+    fclose($file);
+}
 
-        $logFile =  "../Logs/log.log";
+function getAllLis() {
+    //from db
+    $databaseLis = json_decode(file_get_contents("https://munenepeter.github.io/my-file-tracker/data/datas.json"));
 
-        $file = fopen($logFile, 'a');
-        fwrite($file, $this->log);
-        fclose($file);
-    }
-};
+    $allLis = [];
 
- 
-if ($_FILES['files']) {
- 
-    $start_time = microtime(true);
-    $logger->log('INFO: Succesfully uploaded ' . json_encode($_FILES));
+    foreach ($databaseLis as $databaseLi) {
+        $allLis[] = $databaseLi->name;
 
-    if ($_FILES['files']['type'] === "application/pdf") {
+        $abbrs = explode(',', trim($databaseLi->abbr));
 
-        $parser = new \Smalot\PdfParser\Parser();
-        try {
-
-            $pdf = $parser->parseFile($_FILES['files']['tmp_name']);
-
-            $text = $pdf->getText();
-
-            $logger->log('INFO: Trying to parse ' . implode(', ', $pdf->getDetails()));
-
-            $end_time = microtime(true);            
-            $execution_time = round(($end_time - $start_time), 4);
-
-        } catch (\Exception $e) {
-
-            echo '<div class="card" style="color:red;bg-color:red;"> <p class="p-4">' . $e->getMessage() .  '</p> </div> </div>';
-            $logger->log('ERROR: An exception was called ' . $e->getMessage());
-
-            return;
-        }
-    } else {
-        try {
-            $text = \LukeMadhanga\DocumentParser::parseFromFile($_FILES['files']['tmp_name']);
-        } catch (\Exception $e) {
-
-            echo '<div class="card" style="color:red;bg-color:red;"> <p class="p-4">' . $e->getMessage() .  '</p> </div> </div>';
-            $logger->log('ERROR: An exception was called ' . $e->getMessage());
-
-            return;
+        foreach ($abbrs as $abbr) {
+            $allLis[] = trim($abbr);
         }
     }
-    if (!empty($text)) {
-        $logger->log("INFO: Successfully parsed ". $_FILES['files']['name']. " in  $execution_time seconds!");
-        echo nl2br($text);
-    } else {
-        $logger->log('ERROR: Something has happened!');
-        echo "ERROR: Something has happened";
-    }
-
-
-    clearstatcache();
+    return   $allLis;
 }
 
 
-exit;
+function getLisInText($text, $lis) {
+    $foundWords = [];
 
-    if (isset($_GET['url'])) {
-        $url = urldecode($_GET['url']); // Decode URL-encoded string
+    $chunkSize = 242;
+    $searchWordChunks = array_chunk(array_unique($lis), $chunkSize);
 
-
-        // Use basename() function to return the base name of file
-        $file_name = basename($url);
-
-        // Use file_get_contents() function to get the file
-        // from url and use file_put_contents() function to
-        // save the file by using base name
-        if (file_put_contents($file_name, file_get_contents($url))) {
-            echo "File downloaded successfully";
-        } else {
-            echo "File downloading failed.";
-        }
+    // Search for each group of words separately
+    foreach ($searchWordChunks as $chunk) {
+        $escapedSearchWords = array_map(function ($word) {
+            return preg_quote($word, '/');
+        }, $chunk);
+        $pattern = '/\b(' . implode('|', $escapedSearchWords) . ')\b/i';
+        preg_match_all($pattern, $text, $matches);
+        //remove duplicate & empty elements
+        $foundWords = array_filter(array_unique(array_merge($foundWords, $matches[0])));
+    }
+    return $foundWords;
+}
+//parse PDF files
+function getPdfText($filename) {
+    try {
+        $parser = new Parser();
+        $pdf = $parser->parseFile($filename);
+        $text = $pdf->getText();
+        logger('INFO: Trying to parse ' . implode(', ', $pdf->getDetails()));
+    } catch (\Exception $e) {
+        throw new \Exception($e->getMessage());
+        logger('ERROR: An exception was called ' . $e->getMessage());
+        return;
+    }
+    return $text;
+}
+//parse word doc
+function getWordText($file) {
+    try {
+        $text = DocumentParser::parseFromFile($file);
+    } catch (\Exception $e) {
+        throw new \Exception($e->getMessage());
+        logger('ERROR: An exception was called ' . $e->getMessage());
+        return;
+    }
+    return $text;
+}
+function getExcelText($file){
+    throw new \Exception("Excel format is yet to be supported! E214");
+}
+function readUploadedFile($file) {
+    //pdf
+    if (mime_content_type($file) === 'application/pdf') {
+        $text = getPdfText($file);
+    }
+    //word
+    if (mime_content_type($file) === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+        $text = getWordText($file);
+    }
+    //Workbook
+    if (mime_content_type($file) === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+        $text = getExcelText($file);
+    }
+    //plain text
+    if (mime_content_type($file) === 'text/plain') {
+        $text = file_get_contents($file);
     }
 
-
-
-
+    return $text;
+}
 
